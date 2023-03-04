@@ -1,26 +1,26 @@
-#wrapper{
+.wrapper{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 25% 25% 25% 25%;
   gap: 10px;
 }
-#wrapper > div{
+.wrapper > div{
   border: 2px solid black;
   flex: 1;
 }
-#pantry {
+.pantry {
   grid-column: 2;
   grid-row: 1 / 4;
 }
-#personal_info{
+.personal_info{
   grid-column: 2;
   grid-row: 4;
 }
-#meal_selection{
+.meal_selection{
   grid-column: 1;
   grid-row: 2 / 5;
 }
-#summary{
+.summary{
   grid-column: 1;
   grid-row: 1;
 }
