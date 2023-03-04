@@ -5,8 +5,8 @@ export default function Home() {
       <div className = {styles.wrapper}>
         <div className = {styles.pantry}></div>
         <div className = {styles.personal_info}></div>
-        <div className = {styles.meal_section}></div>
         <div className = {styles.summary}></div>
+        <div className = {styles.meal_section}></div>
       </div>
     </>
   )
