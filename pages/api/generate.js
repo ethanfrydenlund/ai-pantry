@@ -22,6 +22,7 @@ export default async function (req, res) {
         model: "text-davinci-003",
         prompt: generatePrompt(ingredients),
         temperature: 0.2,
+        max_tokens: 100,
       });
     res.status(200).json({ result: completion.data.choices[0].text});
   } catch(error) {
