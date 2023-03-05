@@ -38,3 +38,6 @@
   height: 15px;
   margin-left: 5px;
 }
+.ingredient_container{
+  border: 2px solid black;
+}

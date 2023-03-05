@@ -5,7 +5,7 @@ export default function Ingredient_item(ingr){
     
     return (
         <>
-            <div className='ingredient_container'>
+            <div className={styles.ingredient_container}>
                 <p>{ingr.name}</p>
                 <button className={styles.normal_button}>X</button>
             </div>
