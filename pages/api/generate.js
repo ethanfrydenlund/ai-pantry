@@ -26,10 +26,11 @@ export default async function (req, res) {
   } */
 
   try {
-    const completion = await openai.createCompletion({
+    const completion = await openai.ChatCompletion.create({
       model: "gpt-3.5-turbo",
-      prompt: generatePrompt(ingredients),
-      temperature: 0.6,
+      messages: [
+        {"role": "user", "content": "Suggest three meals I could make with these ingredients: ${ingred}"},
+    ]
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
@@ -46,8 +47,4 @@ export default async function (req, res) {
       });
     }
   }
-}
-
-function generatePrompt(ingred) {
-  return `Suggest three meals I could make with these ingredients:  ${ingred}`;
 }
