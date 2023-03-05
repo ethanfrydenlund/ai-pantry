@@ -1,12 +1,12 @@
 import styles from '@/styles/Home.module.css'
+import React from 'react';
+import Ingredient_item from './ingredient_item';
+
 export default function Home() {
   function handleIngredient(){
     var input = document.getElementById("ingredient");
     var inputVal = input.value;
-    var pantry = document.getElementById("pantry");
-    var text = document.createElement("p");
-    text.textContent = inputVal;
-    pantry.appendChild(text);
+    ReactDOM.render(< Ingredient_item name={inputVal}/>, document.getElementById("pantry"));
   }
   return (
     <>
