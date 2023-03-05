@@ -8,8 +8,10 @@
   margin-top: 25px;
 }
 .wrapper > div{
-  border: 2px solid black;
+  border: 2px solid white;
+  border-radius: 10px;
   flex: 1;
+  background-color: #08A4BD;
 }
 .pantry {
   position: relative;
@@ -29,14 +31,31 @@
 .button_container{
   position: absolute;
   bottom: 10px;
-  left: 220px;
+  left: 35%;
 }
 .normal_button{
   width: 20px;
-  height: 15px;
+  height: 20px;
   margin-left: 5px;
 }
+.normal_button2{
+  width: 200px;
+  height: 20px;
+  padding-bottom: 3px;
+}
 .ingredient_container{
-  border: 2px solid black;
+  display: inline-block;
+  border: 2px solid white;
   margin: 15px;
+  border-radius: 10px;
+  background-color: white;
+}
+.headerTxt{
+  text-align: center;
+  font-size: 50px;
+}
+.indiv_ingredients{
+  text-align: 'center';
+  padding: 15px;
+  font-size: 20px;
 }

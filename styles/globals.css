@@ -1,0 +1,13 @@
+header{
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 80%;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    background-color: #08A4BD;
+}
+body{
+    background-color: #6B4B3E;
+}

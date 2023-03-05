@@ -48,7 +48,9 @@ export default function Home() {
     ReactDOM.render(
       <>
         {result_list.map((value) => (
-          <p>{value}</p>
+          <div style = {{textAlign: 'center'}}>
+            <p>{value}</p>
+          </div>
         ))}
       </>, 
       document.getElementById("response")
@@ -56,18 +58,21 @@ export default function Home() {
   }
   return (
     <>
+      <header>
+        <h1 className = {styles.headerTxt}>Meal Creator</h1>
+      </header>
       <div className = {styles.wrapper}>
         <div className = {styles.pantry} id = "pantry">
           <div id = "pantryEntries"></div>
           <div className = {styles.ingredient_entry}>
-            <input type="text" id = "ingredient"></input>
-            <button className = {styles.normal_button} onClick = {handleIngredient}></button>
+            <input type="text" id = "ingredient" placeholder="add ingredients here"></input>
+            <button className = {styles.normal_button} onClick = {handleIngredient}>+</button>
           </div>
         </div>
         <div className = {styles.meal_section} id = "mealselection">
           <div id = "response"></div>
           <div className = {styles.button_container}>
-            <button className = {styles.normal_button} onClick = {requestChatGPT}></button>
+            <button className = {styles.normal_button2} onClick = {requestChatGPT}> Generate Meal Ideas</button>
           </div>
         </div>
       </div>
