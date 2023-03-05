@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export default function Home() {
   var ingredient_list = [];
+  var result_list = [];
   const [result, setResult] = useState();
 
   function handleIngredient(){
@@ -43,7 +44,15 @@ export default function Home() {
       console.error(error);
       alert(error.message);
     }
-    ReactDOM.render(<p>{result}</p>, document.getElementById("response"));
+    result_list.push(result);
+    ReactDOM.render(
+      <>
+        {result_list.map((value) => (
+          < Ingredient_item name={value}/>
+        ))}
+      </>, 
+      document.getElementById("response")
+      );
   }
   return (
     <>
