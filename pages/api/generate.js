@@ -16,14 +16,14 @@ export default async function (req, res) {
   }
 
   const ingredients = req.body.ingredients || '';
-  if (ingredients.trim().length === 0) {
+ /* if (ingredients.trim().length === 0) {
     res.status(400).json({
       error: {
         message: "Error accessing ingredients",
       }
     });
     return;
-  }
+  } */
 
   try {
     const completion = await openai.createCompletion({
