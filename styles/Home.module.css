@@ -16,19 +16,17 @@
   grid-column: 2;
   grid-row: 1 / 4;
 }
-.personal_info{
-  grid-column: 2;
-  grid-row: 4;
-}
 .meal_selection{
+  position: relative;
   grid-column: 1;
-  grid-row: 2 / 4;
-}
-.summary{
-  grid-column: 1;
-  grid-row: 1;
+  grid-row: 1 / 4;
 }
 .ingredient_entry{
+  position: absolute;
+  bottom: 10px;
+  left: 220px;
+}
+.button_container{
   position: absolute;
   bottom: 10px;
   left: 220px;

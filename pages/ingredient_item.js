@@ -6,8 +6,10 @@ export default function Ingredient_item(ingr){
     return (
         <>
             <div className={styles.ingredient_container}>
-                <p>{ingr.name}</p>
-                <button className={styles.normal_button}>X</button>
+                <div style={{textAlign: 'center'}}>
+                    <p>{ingr.name}</p>
+                    <button className={styles.normal_button}>X</button>
+                </div>
             </div>
         </>
 

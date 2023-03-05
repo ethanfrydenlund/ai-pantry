@@ -48,7 +48,7 @@ export default function Home() {
     ReactDOM.render(
       <>
         {result_list.map((value) => (
-          < Ingredient_item name={value}/>
+          <p>{value}</p>
         ))}
       </>, 
       document.getElementById("response")
@@ -64,11 +64,11 @@ export default function Home() {
             <button className = {styles.normal_button} onClick = {handleIngredient}></button>
           </div>
         </div>
-        <div className = {styles.personal_info}></div>
-        <div className = {styles.summary}></div>
-        <div className = {styles.meal_section}>
+        <div className = {styles.meal_section} id = "mealselection">
           <div id = "response"></div>
-          <button className = {styles.normal_button} onClick = {requestChatGPT}></button>
+          <div className = {styles.button_container}>
+            <button className = {styles.normal_button} onClick = {requestChatGPT}></button>
+          </div>
         </div>
       </div>
     </>
