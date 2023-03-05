@@ -1,4 +1,4 @@
-import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi} from "openai";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -26,12 +26,11 @@ export default async function (req, res) {
   } */
 
   try {
-    const completion = await openai.ChatCompletion.create({
-      model: "gpt-3.5-turbo",
-      messages: [
-        {"role": "user", "content": "Suggest three meals I could make with these ingredients: ${ingred}"},
-    ]
-    });
+    const completion = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: generatePrompt(ingredients),
+        temperature: 0.6,
+      });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
@@ -47,4 +46,8 @@ export default async function (req, res) {
       });
     }
   }
+}
+
+function generatePrompt(ingred) {
+    return `Suggest three meals I could make with these ingredients: ${ingred}`;
 }
