@@ -23,7 +23,7 @@ export default async function (req, res) {
         prompt: generatePrompt(ingredients),
         temperature: 0.2,
       });
-    res.status(200).json({ result: completion.data.choices[0].content});
+    res.status(200).json({ result: completion.data.choices[0].text});
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
@@ -41,5 +41,13 @@ export default async function (req, res) {
 }
 
 function generatePrompt(ingred) {
-    return `Suggest three meals I could make with these ingredients: ${ingred}`;
+    return `Suggest a meal I could make with these ingredients:
+    
+    Ingredients: Tomatoes, Lettuce, Cheese
+    Meal: Salad
+    Ingredients: Noodles, Potatoes, Beef, Eggs
+    Meal: Pasta with beef and potatoes on the side
+    Ingredients: ${ingred}
+    Meal: 
+    `;
 }
