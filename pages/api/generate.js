@@ -44,10 +44,12 @@ export default async function (req, res) {
 function generatePrompt(ingred) {
     return `Suggest a meal I could make with these ingredients:
     
-    Ingredients: Tomatoes, Lettuce, Cheese
-    Meal: Salad
+    Ingredients: Tomatoes, Lettuce, Cheese, Parsley
+    Meal: Healthy Salad
     Ingredients: Noodles, Potatoes, Beef, Eggs
     Meal: Pasta with beef and potatoes on the side
+    Ingredients: crackers, cheese, salsa, salami
+    Meal: Snack Spread
     Ingredients: ${ingred}
     Meal: 
     `;
