@@ -22,7 +22,7 @@ export default async function (req, res) {
         model: "gpt-3.5-turbo",
         "messages": [{"role": "user", "content": `Suggest three meals I could make with these ingredients: ${ingred}`}]
       });
-    res.status(200).json({ result: completion.data.choices[0].text });
+    res.status(200).json({ result: completion.data.choices[0].content});
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
