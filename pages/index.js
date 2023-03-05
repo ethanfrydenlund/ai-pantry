@@ -19,6 +19,10 @@ export default function Home() {
     document.getElementById("pantryEntries")
     );
   }
+
+  function requestChatGPT(){
+    
+  }
   return (
     <>
       <div className = {styles.wrapper}>
@@ -31,7 +35,9 @@ export default function Home() {
         </div>
         <div className = {styles.personal_info}></div>
         <div className = {styles.summary}></div>
-        <div className = {styles.meal_section}></div>
+        <div className = {styles.meal_section}>
+          <button className = {styles.normal_button} onClick = {requestChatGPT}></button>
+        </div>
       </div>
     </>
   )
