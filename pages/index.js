@@ -4,10 +4,20 @@ import ReactDOM from 'react-dom';
 import Ingredient_item from './ingredient_item';
 
 export default function Home() {
+  var ingredient_list = [];
+
   function handleIngredient(){
     var input = document.getElementById("ingredient");
     var inputVal = input.value;
-    ReactDOM.render(< Ingredient_item name={inputVal}/>, document.getElementById("pantryEntries"));
+    ingredient_list.push(inputVal);
+    ReactDOM.render(
+    <>
+      {ingredient_list.map((value) => (
+        < Ingredient_item name={value}/>
+      ))}
+    </>, 
+    document.getElementById("pantryEntries")
+    );
   }
   return (
     <>
