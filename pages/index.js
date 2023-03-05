@@ -2,9 +2,11 @@ import styles from '@/styles/Home.module.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Ingredient_item from './ingredient_item';
+import { useState } from "react";
 
 export default function Home() {
   var ingredient_list = [];
+  const [result, setResult] = useState();
 
   function handleIngredient(){
     var input = document.getElementById("ingredient");
@@ -20,8 +22,28 @@ export default function Home() {
     );
   }
 
-  function requestChatGPT(){
-    
+  async function requestChatGPT(){
+    try {
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ingredients: ingredient_list}),
+      });
+
+      const data = await response.json();
+      if (response.status !== 200) {
+        throw data.error || new Error(`Request failed with status ${response.status}`);
+      }
+
+      setResult(data.result);
+    } catch(error) {
+      // Consider implementing your own error handling logic here
+      console.error(error);
+      alert(error.message);
+    }
+    ReactDOM.render(<p>{result}</p>, document.getElementById("response"));
   }
   return (
     <>
@@ -36,6 +58,7 @@ export default function Home() {
         <div className = {styles.personal_info}></div>
         <div className = {styles.summary}></div>
         <div className = {styles.meal_section}>
+          <div id = "response"></div>
           <button className = {styles.normal_button} onClick = {requestChatGPT}></button>
         </div>
       </div>
