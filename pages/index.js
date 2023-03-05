@@ -45,10 +45,18 @@ export default function Home() {
       alert(error.message);
     }
     result_list.push(result);
+    const textstyle ={
+      color: 'black',
+      textAlign: 'center',
+      fontSize: '22px',
+      background: 'white',
+      margin: '15px',
+      padding: '5px'
+    };
     ReactDOM.render(
       <>
         {result_list.map((value) => (
-          <div style = {{textAlign: 'center'}}>
+          <div style = {textstyle}>
             <p>{value}</p>
           </div>
         ))}
