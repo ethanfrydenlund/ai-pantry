@@ -18,13 +18,18 @@ export default async function (req, res) {
   const ingredients = req.body.ingredients || '';
 
   try {
-    const completion = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt: generatePrompt(ingredients),
+    const reply = await openai.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {"role": "system", "content": "You are a helpful chef that reccomends recipies"},
+          {"role": "user", "content":  `Can you suggest a meal I can make with exclusively these ingredients: ${ingredients}.
+           Please provide at most a 2 sentence description and keep in mind you don't have to use all the ingredients.
+           Also can you provide your response in the following format, Description: Calories:`}
+        ],
         temperature: 0.4,
-        max_tokens: 100,
+        max_tokens: 200,
       });
-    res.status(200).json({ result: completion.data.choices[0].text});
+    res.status(200).json({ result: reply.data.choices[0].message.content});
   } catch(error) {
     // Consider adjusting the error handling logic for your use case
     if (error.response) {
@@ -41,7 +46,7 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(ingred) {
+/*function generatePrompt(ingred) {
     return `Suggest a meal I could make with these ingredients:
     
     Ingredients: Tomatoes, Lettuce, Cheese, Parsley
@@ -53,4 +58,4 @@ function generatePrompt(ingred) {
     Ingredients: ${ingred}
     Meal: 
     `;
-}
+}*/

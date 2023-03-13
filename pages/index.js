@@ -48,7 +48,7 @@ export default function Home() {
     const textstyle ={
       color: 'black',
       textAlign: 'center',
-      fontSize: '22px',
+      fontSize: '18px',
       background: 'white',
       margin: '15px',
       padding: '5px'
