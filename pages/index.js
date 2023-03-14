@@ -56,7 +56,8 @@ export default function Home() {
   return (
     <>
       <header>
-        <h1 className = {styles.headerTxt}>Meal Creator</h1>
+        <h1 className = {styles.headerTxt}>AI Weight</h1>
+        <img src="aiweight\public\AI Weight Logo.png"></img>
       </header>
       <div className = {styles.wrapper}>
         <div className = {styles.pantry} id = "pantry">
