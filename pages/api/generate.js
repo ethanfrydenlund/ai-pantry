@@ -22,11 +22,11 @@ export default async function (req, res) {
         model: "gpt-3.5-turbo",
         messages: [
           {"role": "system", "content": "You are a helpful chef that reccomends recipies"},
-          {"role": "user", "content":  `Can you suggest a meal I can make with exclusively these ingredients: ${ingredients}.
-           Please provide at most a 2 sentence description and keep in mind you don't have to use all the ingredients.
-           Also can you provide your response in the following format, Description: Calories:`}
+          {"role": "user", "content":  `Can you suggest one specific meal I can make with exclusively these ingredients: ${ingredients}.
+           Please provide at most a 3 sentence description and keep in mind you don't have to use all the ingredients.
+           Also can you provide your response in the following format, Name: Description: Calories:`}
         ],
-        temperature: 0.4,
+        temperature: 0.2,
         max_tokens: 200,
       });
     res.status(200).json({ result: reply.data.choices[0].message.content});
@@ -45,17 +45,3 @@ export default async function (req, res) {
     }
   }
 }
-
-/*function generatePrompt(ingred) {
-    return `Suggest a meal I could make with these ingredients:
-    
-    Ingredients: Tomatoes, Lettuce, Cheese, Parsley
-    Meal: Healthy Salad
-    Ingredients: Noodles, Potatoes, Beef, Eggs
-    Meal: Pasta with beef and potatoes on the side
-    Ingredients: crackers, cheese, salsa, salami
-    Meal: Snack Spread
-    Ingredients: ${ingred}
-    Meal: 
-    `;
-}*/

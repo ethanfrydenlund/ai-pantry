@@ -56,7 +56,15 @@
   font-weight: bolder;
 }
 .indiv_ingredients{
-  text-align: 'center';
+  text-align: center;
   padding: 15px;
   font-size: 20px;
+}
+.meal_container{
+  color: black;
+  text-align: center;
+  font-size: 18px;
+  background: white;
+  margin: 15px;
+  padding: 5px;
 }

@@ -2,6 +2,7 @@ import styles from '@/styles/Home.module.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Ingredient_item from './ingredient_item';
+import Meal_item from './meal_item';
 import { useState } from "react";
 
 export default function Home() {
@@ -45,21 +46,9 @@ export default function Home() {
       alert(error.message);
     }
     result_list.push(result);
-    const textstyle ={
-      color: 'black',
-      textAlign: 'center',
-      fontSize: '18px',
-      background: 'white',
-      margin: '15px',
-      padding: '5px'
-    };
     ReactDOM.render(
       <>
-        {result_list.map((value) => (
-          <div style = {textstyle}>
-            <p>{value}</p>
-          </div>
-        ))}
+        {result_list.map((value) => (<Meal_item value = {result}/>))}
       </>, 
       document.getElementById("response")
       );
