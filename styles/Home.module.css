@@ -8,10 +8,10 @@
   margin-top: 25px;
 }
 .wrapper > div{
-  border: 4px solid #D84727;
+  border: 4px solid  #00C9A7	 ;
   border-radius: 10px;
   flex: 1;
-  background-color: #EF7B45;
+  background-color:  #E8F3F1;
 }
 .pantry {
   position: relative;

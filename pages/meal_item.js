@@ -10,10 +10,11 @@ export default function meal_item(info){
     } else {
         parts = ['did', 'not', 'work']
     }
+    parts[0] = parts[0].substring(6);
     return (
         <>
             <div className = {styles.meal_container}>
-                <p>{parts[0]}</p>
+                <p><b>{parts[0]}</b></p>
                 <p>Description:{parts[2]}</p>
                 <p>Calories:{parts[4]}</p>
             </div>

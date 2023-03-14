@@ -1,9 +1,15 @@
 header{
     margin-left: auto;
     margin-right: auto;
+    margin-top: 25px;
     width: 80%;
-    color:  #00C9A7;
+    color:  #5C9D8B;
     font-family: 'Acme', sans-serif;
+}
+header > *{
+    display: inline;
+    vertical-align: middle;
+    padding: 6px;
 }
 body{
     background-color: #EDFDF8;

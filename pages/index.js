@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Ingredient_item from './ingredient_item';
 import Meal_item from './meal_item';
 import { useState } from "react";
+import Image from 'next/image';
 
 export default function Home() {
   var ingredient_list = [];
@@ -56,8 +57,9 @@ export default function Home() {
   return (
     <>
       <header>
-        <h1 className = {styles.headerTxt}>AI Weight</h1>
-        <img src="aiweight\public\AI Weight Logo.png"></img>
+        <h1 className = {styles.headerTxt}>AI</h1>
+        <Image src="/newcolorlogo.png" alt = "logo" width="100" height="60"/>
+        <h1 className = {styles.headerTxt}>Weight</h1>
       </header>
       <div className = {styles.wrapper}>
         <div className = {styles.pantry} id = "pantry">
