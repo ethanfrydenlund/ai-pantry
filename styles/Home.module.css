@@ -45,18 +45,19 @@
 }
 .ingredient_container{
   display: inline-block;
-  border: 4px solid white;
   margin: 15px;
-  border-radius: 40px;
   background-color: white;
-}
-.headerTxt{
-  font-size: 60px;
+  border: 4px solid white;
+  border-radius: 10px;
 }
 .indiv_ingredients{
   text-align: center;
-  padding: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-size: 20px;
+}
+.headerTxt{
+  font-size: 60px;
 }
 .meal_container{
   color: black;
@@ -65,4 +66,10 @@
   background: white;
   margin: 15px;
   padding: 5px;
+}
+.meal_container_header{
+  width: 100%;
+}
+.meal_container_header > *{
+  display: inline;
 }

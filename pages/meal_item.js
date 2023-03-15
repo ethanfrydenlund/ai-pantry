@@ -14,9 +14,11 @@ export default function meal_item(info){
     return (
         <>
             <div className = {styles.meal_container}>
-                <p><b>{parts[0]}</b></p>
+                <div className = {styles.meal_container_header}>
+                    <p style={{textAlign: "left"}}><b>{parts[0]}</b></p> 
+                    <p style={{textAlign: "right"}}>Calories:{parts[4]}</p>
+                </div>
                 <p>Description:{parts[2]}</p>
-                <p>Calories:{parts[4]}</p>
             </div>
         </>
 
