@@ -26,7 +26,7 @@ export default async function (req, res) {
            Please provide at most a 3 sentence description and keep in mind you don't have to use all the ingredients.
            Also can you provide your response in the following format, Name: Description: Calories:`}
         ],
-        temperature: 0.2,
+        temperature: 0.4,
         max_tokens: 200,
       });
     res.status(200).json({ result: reply.data.choices[0].message.content});

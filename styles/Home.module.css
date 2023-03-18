@@ -62,13 +62,14 @@
 .meal_container{
   color: black;
   text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   background: white;
   margin: 15px;
-  padding: 5px;
+  padding: 10px;
 }
 .meal_container_header{
-  width: 100%;
+  width: 80%;
+  margin:auto;
 }
 .meal_container_header > *{
   display: inline;

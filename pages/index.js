@@ -7,22 +7,25 @@ import { useState } from "react";
 import Image from 'next/image';
 
 export default function Home() {
-  var ingredient_list = [];
+  const [ingredientList, setIngredientList] = useState([]);
+  //const [resultList, setResultList] = useState([]);
+  //var ingredient_list = [];
   var result_list = [];
   const [result, setResult] = useState();
 
   function handleIngredient(){
     var input = document.getElementById("ingredient");
     var inputVal = input.value;
-    ingredient_list.push(inputVal);
-    ReactDOM.render(
+    //ingredient_list.push(inputVal);
+    setIngredientList([...ingredientList, inputVal]);
+    /*ReactDOM.render(
     <>
-      {ingredient_list.map((value) => (
+      {ingredientList.map((value) => (
         < Ingredient_item name={value}/>
       ))}
     </>, 
     document.getElementById("pantryEntries")
-    );
+    );*/
   }
 
   async function requestChatGPT(){
@@ -32,7 +35,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ingredients: ingredient_list}),
+        body: JSON.stringify({ingredients: ingredientList}),
       });
 
       const data = await response.json();
@@ -59,11 +62,15 @@ export default function Home() {
       <header>
         <h1 className = {styles.headerTxt}>AI</h1>
         <Image src="/newcolorlogo.png" alt = "logo" width="100" height="60"/>
-        <h1 className = {styles.headerTxt}>Weight</h1>
+        <h1 className = {styles.headerTxt}>Pantry</h1>
       </header>
       <div className = {styles.wrapper}>
         <div className = {styles.pantry} id = "pantry">
-          <div id = "pantryEntries"></div>
+          <div id = "pantryEntries">
+            {ingredientList.map((value) => (
+              < Ingredient_item name={value}/>
+            ))}
+          </div>
           <div className = {styles.ingredient_entry}>
             <input type="text" id = "ingredient" placeholder="add ingredients here"></input>
             <button className = {styles.normal_button} onClick = {handleIngredient}>+</button>
