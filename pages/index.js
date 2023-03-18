@@ -40,7 +40,7 @@ export default function Home() {
     <>
       <header>
         <h1 className = {styles.headerTxt}>AI</h1>
-        <Image src="/newcolorlogo.png" alt = "logo" width="100" height="60"/>
+        <Image src="/basketlogo.png" alt = "logo" width="60" height="60"/>
         <h1 className = {styles.headerTxt}>Pantry</h1>
       </header>
       <div className = {styles.wrapper}>
@@ -51,7 +51,7 @@ export default function Home() {
             ))}
           </div>
           <div className = {styles.ingredient_entry}>
-            <input type="text" id = "ingredient" placeholder="add ingredients here"></input>
+            <input type="text" className = {styles.inputField} id = "ingredient" placeholder="add ingredients here"></input>
             <button className = {styles.normal_button} onClick = {handleIngredient}>+</button>
           </div>
         </div>
