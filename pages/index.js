@@ -8,24 +8,12 @@ import Image from 'next/image';
 
 export default function Home() {
   const [ingredientList, setIngredientList] = useState([]);
-  //const [resultList, setResultList] = useState([]);
-  //var ingredient_list = [];
-  var result_list = [];
-  const [result, setResult] = useState();
+  const [resultList, setResultList] = useState([]);
 
   function handleIngredient(){
     var input = document.getElementById("ingredient");
     var inputVal = input.value;
-    //ingredient_list.push(inputVal);
     setIngredientList([...ingredientList, inputVal]);
-    /*ReactDOM.render(
-    <>
-      {ingredientList.map((value) => (
-        < Ingredient_item name={value}/>
-      ))}
-    </>, 
-    document.getElementById("pantryEntries")
-    );*/
   }
 
   async function requestChatGPT(){
@@ -37,25 +25,16 @@ export default function Home() {
         },
         body: JSON.stringify({ingredients: ingredientList}),
       });
-
       const data = await response.json();
       if (response.status !== 200) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-
-      setResult(data.result);
+      setResultList([...resultList, data.result]);
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
     }
-    result_list.push(result);
-    ReactDOM.render(
-      <>
-        {result_list.map((value) => (<Meal_item value = {result}/>))}
-      </>, 
-      document.getElementById("response")
-      );
   }
   return (
     <>
@@ -77,7 +56,11 @@ export default function Home() {
           </div>
         </div>
         <div className = {styles.meal_section} id = "mealselection">
-          <div id = "response"></div>
+          <div id = "response">
+            {resultList.map((value) => (
+              < Meal_item value={value}/>
+            ))}
+          </div>
           <div className = {styles.button_container}>
             <button className = {styles.normal_button2} onClick = {requestChatGPT}> Generate Meal Ideas</button>
           </div>

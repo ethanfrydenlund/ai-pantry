@@ -12,6 +12,7 @@
   border-radius: 10px;
   flex: 1;
   background-color:  #E8F3F1;
+  overflow-y: auto;
 }
 .pantry {
   position: relative;
@@ -42,6 +43,7 @@
   width: 200px;
   height: 20px;
   padding-bottom: 3px;
+  position: fixed;
 }
 .ingredient_container{
   display: inline-block;
