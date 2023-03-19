@@ -37,9 +37,9 @@ export default function Home() {
     }
   }
 
-  function deleteIngredient(ingredient){
-    setIngredientList(ingredientList.filter((item) => item !== ingredient));
-  }
+  /*function deleteIngredient(ingredient){
+    setIngredientList(ingredient);
+  }*/
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function Home() {
         <div className = {styles.pantry} id = "pantry">
           <div id = "pantryEntries">
             {ingredientList.map((value) => (
-              < Ingredient_item name={value} key ={value} delete = {deleteIngredient}/>
+              < Ingredient_item name={value} key ={value}/>
             ))}
           </div>
           <div className = {styles.ingredient_entry}>
