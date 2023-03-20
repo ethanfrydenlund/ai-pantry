@@ -26,12 +26,12 @@
 }
 .ingredient_entry{
   position: fixed;
-  bottom: 16.5%;
+  bottom: 9%;
   left: 64.5%;
 }
 .button_container{
   position: fixed;
-  bottom: 16.5%;
+  bottom: 9.3%;
   left: 24%;
 }
 .inputField{
@@ -89,6 +89,18 @@
   margin-right: 0px;
   padding-right: 0px;
 }
+.normal_button4{
+  position: absolute;
+  right: -10%;
+  color:#00C9A7;
+  border: none;
+  background-color: white;
+  font-size: 20px;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-right: 0px;
+  padding-right: 0px;
+}
 .ingredient_container{
   display: inline-block;
   margin: 15px;
@@ -117,6 +129,7 @@
   padding: 10px;
 }
 .meal_container_header{
+  position: relative;
   width: 80%;
   margin:auto;
 }

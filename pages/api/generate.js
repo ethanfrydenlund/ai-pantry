@@ -21,10 +21,8 @@ export default async function (req, res) {
     const reply = await openai.createChatCompletion({
         model: "gpt-3.5-turbo",
         messages: [
-          {"role": "system", "content": "You are a helpful chef that reccomends recipies"},
-          {"role": "user", "content":  `Can you suggest one specific meal I can make with exclusively these ingredients: ${ingredients}.
-           Please provide at most a 3 sentence description and keep in mind you don't have to use all the ingredients.
-           Also can you provide your response in the following format, Name: Description: Calories:`}
+          {"role": "system", "content": "You are a helpful chef that reccomends recipies. You respond with at most a 4 sentence description and you don't have to use all ingredients provided. You respond in the format Name: Description: Calories:"},
+          {"role": "user", "content":  `Can you suggest one specific meal I can make with exclusively these ingredients: ${ingredients}.`}
         ],
         temperature: 0.4,
         max_tokens: 200,

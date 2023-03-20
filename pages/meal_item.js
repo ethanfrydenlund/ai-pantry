@@ -20,6 +20,7 @@ export default function meal_item(info){
                 <div className = {styles.meal_container_header}>
                     <p style={{float: "left"}}><b>{parts[0]}</b></p> 
                     <p style={{float: "right"}}>Calories: {parts[4]}</p>
+                    <button className = {styles.normal_button4}>X</button>
                 </div>
                 <p style={{clear: "both"}}>Description:{parts[2]}</p>
             </div>

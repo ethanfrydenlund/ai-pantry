@@ -37,9 +37,16 @@ export default function Home() {
     }
   }
 
-  /*function deleteIngredient(ingredient){
-    setIngredientList(ingredient);
-  }*/
+  const handleDelete = (value) => {
+    setIngredientList((ingredientList) => {
+      console.log(`hmm ${value}`)
+      var newItems = [...ingredientList];
+      console.log(`${newItems}`);
+      newItems = newItems.filter(name => name != value);
+      console.log(`${newItems}`);
+      return newItems;
+    });
+  };
 
   return (
     <>
@@ -52,7 +59,7 @@ export default function Home() {
         <div className = {styles.pantry} id = "pantry">
           <div id = "pantryEntries">
             {ingredientList.map((value) => (
-              < Ingredient_item name={value} key ={value}/>
+              < Ingredient_item name={value} key ={value} onDelete={() => handleDelete(value)}/>
             ))}
           </div>
           <div className = {styles.ingredient_entry}>
