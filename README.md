@@ -1,5 +1,4 @@
-##
-AI Pantry
+##AI Pantry
 
 Creates meal ideas utilizing gpt-3.5-turbo
 
