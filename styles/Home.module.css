@@ -89,6 +89,9 @@
   margin-right: 0px;
   padding-right: 0px;
 }
+.normal_button3:hover{
+  color:#5C9D8B;
+}
 .normal_button4{
   position: absolute;
   right: -10%;
@@ -100,6 +103,9 @@
   margin-top: 5px;
   margin-right: 0px;
   padding-right: 0px;
+}
+.normal_button4:hover{
+  color:#5C9D8B;
 }
 .ingredient_container{
   display: inline-block;

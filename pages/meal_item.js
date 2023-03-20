@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from '@/styles/Home.module.css'
 
-export default function meal_item(info){
+export default function meal_item({value, onDelete}){
     // parts[0] = name, parts[1] = desc, parts[2] = calories
-    const string = info.value;
+    const string = value;
     var parts = [];
     if (string){
         parts = string.split(/(Description:|Calories:)/)
@@ -20,7 +20,7 @@ export default function meal_item(info){
                 <div className = {styles.meal_container_header}>
                     <p style={{float: "left"}}><b>{parts[0]}</b></p> 
                     <p style={{float: "right"}}>Calories: {parts[4]}</p>
-                    <button className = {styles.normal_button4}>X</button>
+                    <button className = {styles.normal_button4} onClick = {onDelete}>X</button>
                 </div>
                 <p style={{clear: "both"}}>Description:{parts[2]}</p>
             </div>

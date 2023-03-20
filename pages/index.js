@@ -10,6 +10,9 @@ export default function Home() {
   const [ingredientList, setIngredientList] = useState([]);
   const [resultList, setResultList] = useState([]);
 
+  var ingredientID = 0;
+  var mealID = 0;
+
   function handleIngredient(){
     var input = document.getElementById("ingredient");
     var inputVal = input.value;
@@ -39,11 +42,16 @@ export default function Home() {
 
   const handleDelete = (value) => {
     setIngredientList((ingredientList) => {
-      console.log(`hmm ${value}`)
       var newItems = [...ingredientList];
-      console.log(`${newItems}`);
       newItems = newItems.filter(name => name != value);
-      console.log(`${newItems}`);
+      return newItems;
+    });
+  };
+
+  const handleDeleteMeal = (value) => {
+    setResultList((resultList) => {
+      var newItems = [...resultList];
+      newItems = newItems.filter(name => name != value);
       return newItems;
     });
   };
@@ -59,7 +67,7 @@ export default function Home() {
         <div className = {styles.pantry} id = "pantry">
           <div id = "pantryEntries">
             {ingredientList.map((value) => (
-              < Ingredient_item name={value} key ={value} onDelete={() => handleDelete(value)}/>
+              < Ingredient_item name={value} key ={ingredientID++} onDelete={() => handleDelete(value)}/>
             ))}
           </div>
           <div className = {styles.ingredient_entry}>
@@ -70,7 +78,7 @@ export default function Home() {
         <div className = {styles.meal_section} id = "mealselection">
           <div id = "response">
             {resultList.map((value) => (
-              < Meal_item value={value}/>
+              < Meal_item value={value} key={mealID++} onDelete = {() => handleDeleteMeal(value)}/>
             ))}
           </div>
           <div className = {styles.button_container}>
