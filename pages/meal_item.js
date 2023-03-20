@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '@/styles/Home.module.css'
 
 export default function meal_item({value, onDelete}){
-    // parts[0] = name, parts[1] = desc, parts[2] = calories
     const string = value;
     var parts = [];
     if (string){

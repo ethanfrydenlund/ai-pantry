@@ -30,7 +30,6 @@ export default async function (req, res) {
       });
     res.status(200).json({ result: reply.data.choices[0].message.content});
   } catch(error) {
-    // Consider adjusting the error handling logic for your use case
     if (error.response) {
       console.error(error.response.status, error.response.data);
       res.status(error.response.status).json(error.response.data);
