@@ -11,7 +11,7 @@ export default async function handler(req, res) {
     try {
         const isUnique = await query(
             `
-        SELECT * FROM Userbase
+        SELECT * FROM Users
         WHERE username = $1
         `,
             [username]
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         }
         const results = await query(
             `
-            INSERT INTO Userbase (username, hashed_password, ingredients, recipes)
+            INSERT INTO Users (username, hashed_password, ingredients, recipes)
             VALUES ($1, $2, $3, $4)
             RETURNING id, username, ingredients, recipes
             `,

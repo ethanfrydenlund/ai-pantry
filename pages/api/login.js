@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     try {
         const validUsername = await query(
             `
-            SELECT * FROM Userbase
+            SELECT * FROM Users
             WHERE username = $1
             `   ,
             [username]

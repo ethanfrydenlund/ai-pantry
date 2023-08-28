@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   try {
     const update = await query(
       `
-        UPDATE Userbase
+        UPDATE Users
         SET ingredients = $1,
             recipes = $2
         WHERE id = $3;
