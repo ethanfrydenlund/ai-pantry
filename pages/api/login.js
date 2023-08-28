@@ -4,7 +4,6 @@ export default async function handler(req, res) {
     const username = req.body.username;
     const password = req.body.password;
     try {
-        await connect();
         const validUsername = await query(
             `
             SELECT * FROM Userbase
@@ -13,7 +12,6 @@ export default async function handler(req, res) {
             [username]
         );
         if (validUsername.rows.length === 0) {
-            await end();
             return res.status(400).json({ message: "Username is incorrect" });
         }
         if (bcrypt.compareSync(password, validUsername.rows[0].hashed_password)) {
@@ -23,14 +21,11 @@ export default async function handler(req, res) {
                 ingredients: validUsername.rows[0].ingredients,
                 recipes: validUsername.rows[0].recipes,
             }
-            await end();
             return res.status(200).json(cleanedUser);
         } else {
-            await end();
             return res.status(400).json({ message: "Password is incorrect" });
         }
     } catch (e) {
-        await end();
         res.status(500).json({ message: e.message });
     }
 }

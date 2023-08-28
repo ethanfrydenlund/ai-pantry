@@ -9,7 +9,6 @@ export default async function handler(req, res) {
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
 
     try {
-        await connect();
         const isUnique = await query(
             `
         SELECT * FROM Userbase
@@ -29,10 +28,8 @@ export default async function handler(req, res) {
             [username, hashedPassword, ingredients, recipes]
         );
         const name = results.rows[0].username;
-        await end();
         return res.status(201).json(`${name} was created! Try logging in :)`);
     } catch (e) {
-        await end();
         res.status(500).json({ message: e.message });
     }
 }
