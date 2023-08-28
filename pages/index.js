@@ -1,90 +1,141 @@
-import styles from '@/styles/Home.module.css'
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Ingredient_item from './ingredient_item';
-import Meal_item from './meal_item';
-import { useState } from "react";
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { useSession, signIn, signOut } from "next-auth/react"
+import { useEffect } from 'react';
+import { createUseStyles } from 'react-jss';
 
-export default function Home() {
-  const [ingredientList, setIngredientList] = useState([]);
-  const [resultList, setResultList] = useState([]);
+const styles = createUseStyles({
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '85vh',
+    width: '100%',
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: '100px',
+  },
+  headerText: {
+    fontSize: '60px',
+    margin: '0px',
+  },
+  loginContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    width: '200px',
+    height: '35px',
+    backgroundColor: '#00C9A7',
+    border: '4px solid #00C9A7',
+    borderRadius: '4px',
+    color: 'white',
+    fontSize: '18px',
+    fontWeight: '600',
+    transform: 'scale(1)', // Note: 'scale' should be 'transform'
+    transition: 'transform 0.2s',
+    marginTop: '15px',
+    '&:hover': {
+      backgroundColor: '#5C9D8B',
+      border: '4px solid #5C9D8B',
+      scale: 1.025,
+    },
+  },
+  statusText: {
+    fontSize: '24px',
+    fontWeight: '600',
+    color: '#00C9A7',
+  },
+  input: {
+    height: '30px',
+    border: '3px solid #00C9A7',
+    borderRadius: '4px',
+    outline: 'none',
+    fontSize: '14px',
+    fontWeight: '600',
+    color: 'gray',
+  },
+});
 
-  var ingredientID = 0;
-  var mealID = 0;
+export default function login() {
+  const classes = styles();
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [returnData, setReturnData] = React.useState("");
+  const [creatingAccount, setCreatingAccount] = React.useState(false);
+  const router = useRouter();
+  const { data: session } = useSession();
 
-  function handleIngredient(){
-    var input = document.getElementById("ingredient");
-    var inputVal = input.value;
-    setIngredientList([...ingredientList, inputVal]);
+  useEffect(() => {
+    if (session) {
+      router.push("/pantry");
+    }
+  }, [session]);
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const switchToCreate = () => {
+    setCreatingAccount(true);
   }
 
-  async function requestChatGPT(){
+  async function createAccount() {
     try {
-      const response = await fetch("/api/generate", {
+      const response = await fetch("/api/createAccount", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ingredients: ingredientList}),
+        body: JSON.stringify({ username, password }),
       });
       const data = await response.json();
-      if (response.status !== 200) {
+      if (response.status !== 201 && response.status !== 400) {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
-      setResultList([...resultList, data.result]);
-    } catch(error) {
+      else if (response.status === 400) {
+        setReturnData('Username already exists');
+      } else {
+        setReturnData(data);
+        setCreatingAccount(false);
+      }
+    } catch (error) {
       console.error(error);
       alert(error.message);
     }
   }
 
-  const handleDelete = (value) => {
-    setIngredientList((ingredientList) => {
-      var newItems = [...ingredientList];
-      newItems = newItems.filter(name => name != value);
-      return newItems;
-    });
-  };
-
-  const handleDeleteMeal = (value) => {
-    setResultList((resultList) => {
-      var newItems = [...resultList];
-      newItems = newItems.filter(name => name != value);
-      return newItems;
-    });
-  };
-
   return (
-    <>
-      <header>
-        <h1 className = {styles.headerTxt}>AI</h1>
-        <Image src="/basketlogo.png" alt = "logo" width="60" height="60"/>
-        <h1 className = {styles.headerTxt}>Pantry</h1>
+    <div className={classes.wrapper}>
+      <header className={classes.header}>
+        <h1 className={classes.headerText}>AI</h1>
+        <Image src="/basketlogo.png" alt="logo" width="60" height="60" />
+        <h1 className={classes.headerText}>Pantry</h1>
       </header>
-      <div className = {styles.wrapper}>
-        <div className = {styles.pantry} id = "pantry">
-          <div id = "pantryEntries">
-            {ingredientList.map((value) => (
-              < Ingredient_item name={value} key ={ingredientID++} onDelete={() => handleDelete(value)}/>
-            ))}
+      <div className={classes.loginContainer}>
+        {!creatingAccount && <button className={classes.button} onClick={() => signIn()}>Sign in</button>}
+        {creatingAccount && (
+          <div className={classes.loginContainer}>
+            <h1 style={{ color: '#00C9A7', marginBottom: '5px' }}>Username</h1>
+            <input className={classes.input} type="text" id="username" name="username" onChange={handleUsernameChange} value={username} />
+            <h1 style={{ color: '#00C9A7', marginBottom: '5px' }}>Password</h1>
+            <input className={classes.input} type="password" id="password" name="password" onChange={handlePasswordChange} value={password} />
+            <button className={classes.button} onClick={createAccount} >Submit</button>
           </div>
-          <div className = {styles.ingredient_entry}>
-            <input type="text" className = {styles.inputField} id = "ingredient" placeholder="add ingredients here"></input>
-            <button className = {styles.normal_button} onClick = {handleIngredient}>+</button>
-          </div>
-        </div>
-        <div className = {styles.meal_section} id = "mealselection">
-          <div id = "response">
-            {resultList.map((value) => (
-              < Meal_item value={value} key={mealID++} onDelete = {() => handleDeleteMeal(value)}/>
-            ))}
-          </div>
-          <div className = {styles.button_container}>
-            <button className = {styles.normal_button2} onClick = {requestChatGPT}> Generate Meal Ideas</button>
-          </div>
-        </div>
+        )}
+        {!creatingAccount && <button className={classes.button} onClick={switchToCreate} >Create Account</button>}
       </div>
-    </>
+      <h3 className={classes.statusText}>{returnData}</h3>
+    </div>
   )
 }
