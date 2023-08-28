@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     const username = req.body.username;
     const password = req.body.password;
     const ingredients = [];
-    const recipies = [];
+    const recipes = [];
     const saltRounds = 10;
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
 
@@ -22,11 +22,11 @@ export default async function handler(req, res) {
         }
         const results = await query(
             `
-            INSERT INTO Userbase (username, hashed_password, ingredients, recipies)
+            INSERT INTO Userbase (username, hashed_password, ingredients, recipes)
             VALUES ($1, $2, $3, $4)
-            RETURNING id, username, ingredients, recipies
+            RETURNING id, username, ingredients, recipes
             `,
-            [username, hashedPassword, ingredients, recipies]
+            [username, hashedPassword, ingredients, recipes]
         );
         const name = results.rows[0].username;
         end();

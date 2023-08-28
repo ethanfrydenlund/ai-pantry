@@ -21,7 +21,7 @@ export default async function handler(req, res) {
                 id: validUsername.rows[0].id,
                 username: validUsername.rows[0].username,
                 ingredients: validUsername.rows[0].ingredients,
-                recipies: validUsername.rows[0].recipies,
+                recipes: validUsername.rows[0].recipes,
             }
             end();
             return res.status(200).json(cleanedUser);

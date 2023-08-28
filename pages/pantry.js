@@ -149,7 +149,7 @@ export default function Home() {
 
 
   const [ingredientList, setIngredientList] = useState(session?.user.ingredients || []);
-  const [resultList, setResultList] = useState(session?.user.recipies || []);
+  const [resultList, setResultList] = useState(session?.user.recipes || []);
   const [ingredient, setIngredient] = useState("");
   const [mealButton, setMealButton] = useState(false);
   const [saveButton, setSaveButton] = useState(false);
@@ -198,7 +198,7 @@ export default function Home() {
       {
         user: {
           ingredients: ingredientList,
-          recipies: resultList,
+          recipes: resultList,
         }
       });
     try {
@@ -207,7 +207,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ingredients: ingredientList, recipies: resultList, id: session?.user.id }),
+        body: JSON.stringify({ ingredients: ingredientList, recipes: resultList, id: session?.user.id }),
       });
       const data = await response.json();
       setTimeout(function () {

@@ -1,7 +1,7 @@
 import { query } from "@/lib/db";
 export default async function handler(req, res) {
   const ingredients = req.body.ingredients;
-  const recipies = req.body.recipies;
+  const recipes = req.body.recipies;
   const id = req.body.id;
 
   try {
@@ -10,10 +10,10 @@ export default async function handler(req, res) {
       `
         UPDATE Userbase
         SET ingredients = $1,
-            recipies = $2
+            recipes = $2
         WHERE id = $3;
         `   ,
-      [ingredients, recipies, id]
+      [ingredients, recipes, id]
     );
     end();
     return res.status(200).json('successful');
