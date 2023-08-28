@@ -1,7 +1,7 @@
 import { query } from "@/lib/db";
 export default async function handler(req, res) {
   const ingredients = req.body.ingredients;
-  const recipes = req.body.recipies;
+  const recipes = req.body.recipes;
   const id = req.body.id;
 
   try {

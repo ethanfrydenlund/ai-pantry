@@ -18,7 +18,7 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         try {
-          const response = await fetch('http://www.ai-pantry.com/api/login', {
+          const response = await fetch('https://www.ai-pantry.com/api/login', {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -49,7 +49,7 @@ export const authOptions = {
     async jwt({ token, trigger, user, session }) {
       if (trigger === "update") {
         token.user.ingredients = session.user.ingredients;
-        token.user.recipies = session.user.recipies;
+        token.user.recipes = session.user.recipes;
       }
       else if (user) {
         token.user = user;
