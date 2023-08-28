@@ -5,6 +5,7 @@ export default async function handler(req, res) {
   const id = req.body.id;
 
   try {
+    connect();
     const update = await query(
       `
         UPDATE Userbase
@@ -14,8 +15,10 @@ export default async function handler(req, res) {
         `   ,
       [ingredients, recipies, id]
     );
+    end();
     return res.status(200).json('successful');
   } catch (e) {
+    end();
     res.status(500).json({ message: e.message });
   }
 }

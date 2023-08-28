@@ -1,5 +1,6 @@
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import path from 'path';
 
 export const authOptions = {
   // Configure one or more authentication providers
@@ -17,7 +18,7 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         try {
-          const response = await fetch('http://localhost:3000/api/login', {
+          const response = await fetch('http://www.ai-pantry.com/api/login', {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
