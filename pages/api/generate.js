@@ -30,7 +30,7 @@ export default async function (req, res) {
       model: "gpt-3.5-turbo",
       messages: [
         {
-          "role": "system", "content": `You are a helpful chef that reccomends reasonable recipies. You always respond in the format 
+          "role": "system", "content": `You are a helpful chef that reccomends reasonable recipes. You always respond in the format 
         Name: Description: Calories: . The description section should be a series of bullet points (using -) explaining how to prepare the dish.
          You will be given a list of ingredients, and you should suggest a recipie that could be made using them` },
         {
