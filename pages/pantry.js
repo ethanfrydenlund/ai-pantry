@@ -202,7 +202,7 @@ export default function Home() {
         }
       });
     try {
-      const response = await fetch("/api/updatePantry", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/updatePantry`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

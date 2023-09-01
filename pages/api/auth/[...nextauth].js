@@ -18,7 +18,7 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         try {
-          const response = await fetch('https://www.ai-pantry.com/api/login', {
+          const response = await fetch(process.env.NEXT_PUBLIC_WEBSITE_URL + '/api/login', {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

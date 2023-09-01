@@ -92,7 +92,7 @@ export default function login() {
 
   async function createAccount() {
     try {
-      const response = await fetch("https://www.ai-pantry.com/api/createAccount", {
+      const response = await fetch(process.env.NEXT_PUBLIC_WEBSITE_URL + '/api/createAccount', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
