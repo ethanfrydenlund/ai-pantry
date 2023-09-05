@@ -26,11 +26,10 @@ const styles = createUseStyles({
     top: '4%',
     backgroundColor: 'white',
     fontSize: '20px',
-    transition: 'scale 0.2s, opacity 0.25s', // Combining transitions
+    transition: 'opacity 0.25s', // Combining transitions
     opacity: 0,
     '&:hover': {
       color: '#5C9D8B',
-      transform: 'scale(1.025)',
     },
   },
 });

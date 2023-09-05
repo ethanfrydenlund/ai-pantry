@@ -27,7 +27,7 @@ export const authOptions = {
           });
           const data = await response.json();
           if (response.status === 200) {
-            const user = data; ``
+            const user = data;
             return Promise.resolve(user);
           }
           return null;
